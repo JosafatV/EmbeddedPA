@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Asistente Personal</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+<ion-item>
+  <ion-label>
+    Email
+  </ion-label>
+  <ion-input type="text" [(ngModel)]="user.email"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label>
+    Password
+  </ion-label>
+  <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+</ion-item>
+
+<div class="container d-inline p-1">
+
+  <div class="row d-flex justify-content-center">
+    <div class="col-sm-12">
+     
+     
+      <ion-item-divider>
+        <ion-footer *ngIf="user">
+            <ion-toolbar >
+              <ion-button class="toolbar" (click)="onLogin ()">
+                <ion-icon  name="checkmark" slot="start"></ion-icon>
+                Login
+              </ion-button>
+            </ion-toolbar>
+        </ion-footer>
+      </ion-item-divider>
+    
+
+    </div>
+
+  
+
+  </div>
+ 
+</div>
+
+
+</ion-content>
+ 

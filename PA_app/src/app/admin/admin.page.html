@@ -1,0 +1,103 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>admin</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="img-fluid" alt="Responsive image" > 
+
+ 
+  <ion-list>
+    <div style="display: none;" *ngFor="let casa of (casas | async)" >
+    {{casa.Luz1}}, 
+    {{casa.Luz2}},
+    {{casa.Luz3}}, 
+    {{casa.Luz4}}, 
+    {{casa.Luz5}}, 
+    {{casa.Puerta1}},
+    {{casa.Puerta2}},  
+    {{casa.Puerta3}}, 
+    {{casa.Puerta4}}, 
+    {{casa.Puerta5}}
+  
+    <div *ngIf="casa; then callfunction; else nofunction"></div>
+    <ng-template #callfunction>
+      {{setData(casa.Luz1,casa.Luz2,casa.Luz3,casa.Luz4,casa.Luz5,casa.Puerta1,casa.Puerta2,casa.Puerta3,casa.Puerta4,casa.Puerta5)}}
+    </ng-template>
+    <ng-template #nofunction>
+     <!-- something else -->
+    </ng-template>
+  </div>
+  </ion-list>
+
+    <!-- boton para regresar -->
+<ion-button class="fixed-bottom" size="large" routerLink="/home" (click)= "temaSalida()">Volver</ion-button>
+
+
+<div class="container">
+  
+    <div class="container position-fixed luz1 vw-2 vh-2" [style]="getDynamicLuz1()" >
+        <img class="img" src="./../../assets/icon/lighIcon.png"  >
+        <div class="bottom-right"  >1</div>
+    </div>
+
+    <div class="container position-fixed luz2 vw-2 vh-2" [style]="getDynamicLuz2()">
+      <img class="img" src="./../../assets/icon/lighIcon.png"  >
+      <div class="bottom-right">2</div>
+    </div>
+
+    <div class="container position-fixed luz3 vw-2 vh-2" [style]="getDynamicLuz3()">
+      <img class="img" src="./../../assets/icon/lighIcon.png"  >
+      <div class="bottom-right">3</div>
+    </div>
+
+    <div class="container position-fixed luz4 vw-2 vh-2" [style]="getDynamicLuz4()">
+      <img class="img" src="./../../assets/icon/lighIcon.png"  >
+      <div class="bottom-right">4</div>
+    </div>
+
+    <div class="container position-fixed luz5 vw-2 vh-2" [style]="getDynamicLuz5()">
+      <img class="img" src="./../../assets/icon/lighIcon.png"  >
+      <div class="bottom-right">5</div>
+    </div>
+
+
+    <div class="container position-fixed puerta1 vw-2 vh-2" [style]="getDynamicPuerta1()">
+      <img class="img" src="./../../assets/icon/doorIcon.png"  >
+      <div class="bottom-right">1</div>
+    </div>
+
+    <div class="container position-fixed puerta2 vw-2 vh-2" [style]="getDynamicPuerta2()">
+      <img class="img" src="./../../assets/icon/doorIcon.png"  >
+      <div class="bottom-right">2</div>
+    </div>
+
+    <div class="container position-fixed puerta3 vw-2 vh-2" [style]="getDynamicPuerta3()">
+      <img class="img" src="./../../assets/icon/doorIcon.png"  >
+      <div class="bottom-right">3</div>
+    </div>
+
+    <div class="container position-fixed puerta4 vw-2 vh-2" [style]="getDynamicPuerta4()">
+      <img class="img" src="./../../assets/icon/doorIcon.png"  >
+      <div class="bottom-right">4</div>
+    </div>
+
+    <div class="container position-fixed puerta5 vw-2 vh-2" [style]="getDynamicPuerta5()">
+      <img class="img" src="./../../assets/icon/doorIcon.png"  >
+      <div class="bottom-right">5</div>
+    </div>
+
+
+
+
+
+</div>
+
+
+
+  
+  
+  
+
+
+</ion-content>
