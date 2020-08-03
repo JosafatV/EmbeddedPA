@@ -1,0 +1,45 @@
+	======== Cross-compiling with cmake ======== 
+	
+mkdir build && cd build
+
+. /opt/poky/2.5.1/environment-setup-cortexa7hf-neon-vfpv4-poky-linux-gnueabi -c
+
+cmake ../ -DCMAKE_INSTALL_PREFIX:PATH=/home/josav09/Documents/Git/EmbeddedPA/gpio/build/usr -DCMAKE_TOOLCHAIN_FILE=/home/josav09/Documents/Git/EmbeddedPA/gpio/crosscompile.cmake
+
+make
+
+copy the exe file "ugpio_tests" to the Rasp
+
+copy the library "libugpio.so" file to /usr/lib in the Rasp
+
+
+
+	======== Copy files to the Raspberry Pi ======== 
+
+Access the Rapsberry Pi through ethernet
+
+	# ssh root@192.168.0.123
+
+Copy the files in build to the rasp (copies at "/")
+
+	# sudo scp ugpio_tests root@192.168.0.123:/ugpio_tests
+
+
+
+	======== Configure the Raspberry Pi's network ======== 
+	
+Change the interface config file
+
+	sudo nano etc/network/interfaces
+	
+Change the eth0 interface to:
+
+auto eth0
+iface eth0 inet static
+	address 192.168.0.123
+	netmask 255.255.255.0
+	network 192.168.0.1
+	gateway 192.168.0.1
+	
+This sets the IP of the Rasp to static.
+
