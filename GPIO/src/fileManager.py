@@ -1,20 +1,6 @@
-# Instituto Tecnologico de Costa Rica
-#
-# Python file manager
-#
-# from fileManager import *
-#
-# Josafat Vargas
-# 30 of May, 2019
+# This is a dummy file for testing pthreads are working
 
 
-# Manages the access and operaions in the external file
-# fileName: file to be accessed
-# mode: "r" to read, "w" to write (erases previous data), "a" appends data to file
-# data: anything if read, data to append/wrie
-# return: 0 if failed
-# return: 1 if succeded, overwrites/appends to fileName file
-# return: data read if mode == "r"
 def fileManager (fileName, mode, data):
     #read and print file
     if (mode == "r"):

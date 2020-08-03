@@ -1,3 +1,5 @@
+# This is a dummy file for testing pthreads are working
+
 import time
 from fileManager import readFile, writeFile
 
