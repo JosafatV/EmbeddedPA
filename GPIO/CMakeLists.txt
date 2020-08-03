@@ -14,7 +14,7 @@ include_directories(${PROJECT_SOURCE_DIR}/lib)
 add_executable (raspio_test src/main.c)
 
 #link against required libraries
-target_link_libraries(raspio_test raspio)
+target_link_libraries(raspio_test pthread raspio)
 
 #install the binary
 install (TARGETS raspio_test DESTINATION bin)

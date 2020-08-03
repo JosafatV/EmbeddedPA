@@ -1,3 +1,12 @@
+	======== Compiling with cmake ======== 
+
+mkdir build && cd build
+
+cmake ../ -DCMAKE_INSTALL_PREFIX:PATH=/home/josav09/Documents/Git/EmbeddedPA/GPIO/build/usr 
+
+make
+
+
 	======== Cross-compiling with cmake ======== 
 	
 mkdir build && cd build
