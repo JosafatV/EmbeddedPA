@@ -11,13 +11,13 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 include_directories(${PROJECT_SOURCE_DIR}/lib)
 
 # add the executable
-add_executable (raspio_test src/main.c)
+add_executable (embeddedPA src/main.c)
 
 #link against required libraries
-target_link_libraries(raspio_test pthread raspio)
+target_link_libraries(embeddedPA pthread raspio)
 
 #install the binary
-install (TARGETS raspio_test DESTINATION bin)
+install (TARGETS embeddedPA DESTINATION bin)
 
 #package source generation
 set(MAJOR "0")

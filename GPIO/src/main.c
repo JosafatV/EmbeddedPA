@@ -12,41 +12,6 @@ int half_sec = 500000;
 short red_led = 17;
 short yel_led = 27;
 short grn_led = 22;
-short pin_btn = 2;
-
-void read_file (char* data) {
-	FILE *fp;
-	char str[128];
-	char* value;
-	
-	fp = fopen(read_path, "r"); // read mode
-
-	if (fp == NULL) {
-		perror("Error while opening the r_file.\n");
-		exit(EXIT_FAILURE);
-	}
-
-	fgets(str, 128, fp);
-	puts(str);
-	//printf("%s\n", str);
-	fclose(fp);
-    data = &str[0];
-}
-
-void write_file (char* data) {
-	FILE *fp;
-	char* newline = "\n";
-	fp = fopen(write_path, "w"); // overwrite mode
-
-	if (fp == NULL) {
-	  perror("Error while opening the w_file.\n");
-	  exit(EXIT_FAILURE);
-	}
-
-	fprintf(fp, "%s", data);
-
-	fclose(fp);
-}
 
 /** Launches the python3 pyrebase server*/
 void* start_pyrebase_server() {
@@ -58,22 +23,27 @@ void* start_audio_service() {
 	system("python3 ./audio_service.py");
 }
 
-/** Dummy GPIO control function */
 void gpio_control () {
-	char* read;
-	int data = 0; // swap to GPIO read
+	FILE *fp;
+	char str[16];
+	char* value;
 	while (1) {
-		read_file(read);
-		if (data) {
-			write_file("1"); //digitalRead(button)
-			data = 0;
-		} else {
-			write_file("0");
-			data = 1;
+		fp = fopen(read_path, "r"); // read mode
+
+		if (fp == NULL) {
+			perror("Error while opening the r_file.\n");
+			exit(EXIT_FAILURE);
 		}
-		
+
+		fgets(str, 16, fp);
+		printf("%d:%d:%d\n", str[0]-48,str[2]-48,str[4]-48);
+		//digitalWrite(red_led, str[0]-48);
+		//digitalWrite(yel_led, str[2]-48);
+		//digitalWrite(grn_led, str[3]-48);
+		fclose(fp);
 		usleep(half_sec);
 	}
+    
 }
 
 int main() {

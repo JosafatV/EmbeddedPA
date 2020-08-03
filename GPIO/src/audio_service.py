@@ -10,12 +10,7 @@ def choose_data (select):
         return "0:0:1"
 
 select = 0
-while(True):
-    
-    time.sleep(2.5)
-    read_data = readFile("btn_status.txt")
-    print(read_data)
-    
+while(True):    
     time.sleep(2.5)
     data = choose_data(select)
     writeFile("led_status.txt", data)
