@@ -36,10 +36,10 @@ void gpio_control () {
 		}
 
 		fgets(str, 16, fp);
-		printf("%d:%d:%d\n", str[0]-48,str[2]-48,str[4]-48);
-		//digitalWrite(red_led, str[0]-48);
-		//digitalWrite(yel_led, str[2]-48);
-		//digitalWrite(grn_led, str[3]-48);
+		//printf("%d:%d:%d\n", str[0]-48,str[2]-48,str[4]-48);
+		digitalWrite(red_led, str[0]-48);
+		digitalWrite(yel_led, str[2]-48);
+		digitalWrite(grn_led, str[4]-48);
 		fclose(fp);
 		usleep(half_sec);
 	}
@@ -48,18 +48,19 @@ void gpio_control () {
 
 int main() {
 	
-	/* init pins
+	// init pins
 	pinMode(red_led, OUTPUT);
 	pinMode(yel_led, OUTPUT);
 	pinMode(grn_led, OUTPUT);
-	pinMode(pin_btn, INPUT);
-	*/
+	
 	// Manage python as threads
 	pthread_t server, service;
 	int ret;
 
 	ret = pthread_create(&server, NULL, start_pyrebase_server, NULL);
 	if(ret!=0) {printf("+++ Error creating server thread +++\n");}
+
+	usleep(16*half_sec); // Wait for the server to start
 
 	ret = pthread_create(&service, NULL, start_audio_service, NULL);
     if(ret!=0) {printf("+++ Error creating service thread +++\n");}

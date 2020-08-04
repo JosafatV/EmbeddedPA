@@ -1,11 +1,13 @@
-	======== Compiling with cmake ======== 
+	======== Compiling with cmake (for x86) ======== 
 
 mkdir build && cd build
 
-cmake ../ -DCMAKE_INSTALL_PREFIX:PATH=/home/josav09/Documents/Git/EmbeddedPA/GPIO/build/usr 
+cmake ../ -DCMAKE_INSTALL_PREFIX:PATH=/home/path/to/build/usr 
 
 make
 
+Note: comment out the code for GPIO control since it will not work in x86.
+	  this section is mostly for debugging
 
 	======== Cross-compiling with cmake ======== 
 	
@@ -13,11 +15,11 @@ mkdir build && cd build
 
 . /opt/poky/2.5.1/environment-setup-cortexa7hf-neon-vfpv4-poky-linux-gnueabi -c
 
-cmake ../ -DCMAKE_INSTALL_PREFIX:PATH=/home/josav09/Documents/Git/EmbeddedPA/gpio/build/usr -DCMAKE_TOOLCHAIN_FILE=/home/josav09/Documents/Git/EmbeddedPA/gpio/crosscompile.cmake
+cmake ../ -DCMAKE_INSTALL_PREFIX:PATH=/home/path/to/build/usr -DCMAKE_TOOLCHAIN_FILE=/home/path/to/crosscompile.cmake
 
 make
 
-copy the exe file "ugpio_tests" to the Rasp
+copy the exe file "embeddedPA" to the Rasp
 
 copy the library "libugpio.so" file to /usr/lib in the Rasp
 
@@ -36,7 +38,10 @@ Copy the files in build to the rasp (copies at "/")
 
 
 	======== Configure the Raspberry Pi's network ======== 
-	
+
+This will make the pyrebase server FAIL. used mostly for development. 
+You can still connect to the Rasp through ssh, but use dhcp configuration
+
 Change the interface config file
 
 	sudo nano etc/network/interfaces

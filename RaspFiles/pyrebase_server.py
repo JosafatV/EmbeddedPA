@@ -17,7 +17,7 @@ CONFIG = {
         }
 
 ##Path of the audio file to upload
-PATH = '/home/sebas/TEC/Sistemas Embebidos/Proyectos/Proyecto 3/Código/EmbeddedPA/Server'
+PATH = '/'
 
 ##Filename extension
 EXTENSION = '.wav'
@@ -48,6 +48,7 @@ def checkFiles():
             print("Error")
             checkFiles()
 
+print("+++ Starting pyrebase server +++")
 checkFiles()
                 
 

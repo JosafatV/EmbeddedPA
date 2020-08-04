@@ -64,14 +64,14 @@ def dummy_pocket():
 		start_record(audio_id)
 		audio_id += 1
 
-def start_pocket():
-	print("* started audio recognition")
-	speech = LiveSpeech(lm=False, keyphrase='machine', kws_threshold=1e-20)
-	audio_id = 0
-	for phrase in speech:
-		print(phrase.segments(detailed=True))
-		update_leds(1)
+#def start_pocket():
+#	print("* started audio recognition")
+#	speech = LiveSpeech(lm=False, keyphrase='machine', kws_threshold=1e-20)
+#	audio_id = 0
+#	for phrase in speech:
+#		print(phrase.segments(detailed=True))
+#		update_leds(1)
 #		start_record(audio_id)
-		audio_id += 1
+#		audio_id += 1
 
-start_pocket()
+dummy_pocket()
